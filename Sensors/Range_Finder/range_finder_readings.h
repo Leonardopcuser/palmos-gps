@@ -3,7 +3,7 @@ int sensorValue = 0;  // variable to store the value coming from the sensor
 
 void setup() {
   // declare the ledPin as an OUTPUT:
-  pinMode(ledPin, OUTPUT);
+//  pinMode(ledPin, OUTPUT);
 }
 
 void loop() {

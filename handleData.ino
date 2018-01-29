@@ -10,6 +10,7 @@ char speedBuff[15];
 char angleBuff[15];
 
 void handleData() {
+  led.breath(20);
   int outputLength = 0;
   timer = millis(); // reset the timer
   packetNumber++;
@@ -102,16 +103,5 @@ void handleData() {
 
   free(timeData);
   free(dateData);
-  //  free(tempCelcius);
-  //  free(humidityData);
-  //  free(latitudeCoord);
-  //  free(longitudeCoord);
-  //  free(altitude);
-  //  free(angle);
-  //  free(SPEED);
-  //  free(acc_x);
-  //  free(acc_y);
-  //  free(acc_z);
-  //  free(distance);
 }
 

@@ -8,8 +8,6 @@
 //#include <TimerOne.h>
 #include <math.h>
 #include <avr/dtostrf.h>
-#include <LEDEffect.h>
-LEDEffect led(13);
 
 // RF and SPI Libraries
 #include <SPI.h>
@@ -18,7 +16,7 @@ LEDEffect led(13);
 // 9 DOF Sensor Libraries from Adafruit with I2C through Wire
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
-#include <Adafruit_FXOS8700.h>
+#include <Adafruit_FXOS8700.h>c
 
 // Soil temp and moisture sensor Libraries from Adafruit
 #include <SHT1x.h>
@@ -68,12 +66,15 @@ float val;
 
 long packetNumber = 0;
 
+#include <LEDEffect.h>
+LEDEffect led(13);
+
 void setup() {
   initializeSensor();
 }
 
 void loop() {
-  led.breath(30);
+  led.breath(20);
   led.update();
 
   GPSMainRead();
@@ -84,5 +85,6 @@ void loop() {
   if (millis() - timer > time_delay) {
     handleData();
   }
+  led.breath(20);
 }
 
