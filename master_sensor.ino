@@ -39,7 +39,7 @@
 #define RFM95_CS      10   // "B"
 #define RFM95_INT     6    // "D"
 
-#define FREQUENCY 500 // Number of Readings/transmission per hour
+#define FREQUENCY 200 // Number of Readings/transmission per hour
 #define GPSSerial Serial1 // Serial port used for GPS transmission. Careful if using ESP 8266, Serial is used for bootloading
 
 #define HOUR_CONSTANT 3600000 // Number of ms in an hour, used to calculate delay in ms
@@ -58,11 +58,8 @@ int time_delay = HOUR_CONSTANT / FREQUENCY;
 uint32_t timer = millis();
 
 bool debug = true; // global variable to switch between normal vs debugger mode.
-bool WAIT_FOR_SERIAL = true;
+bool WAIT_FOR_SERIAL = false;
 bool foundMaster = false;
-
-// dtostrf variables: http://forum.arduino.cc/index.php?topic=243660.0
-float val;
 
 long packetNumber = 0;
 
@@ -85,6 +82,5 @@ void loop() {
   if (millis() - timer > time_delay) {
     handleData();
   }
-  led.breath(20);
 }
 

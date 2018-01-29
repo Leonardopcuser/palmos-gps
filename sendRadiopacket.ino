@@ -1,6 +1,7 @@
-void sendRadiopacket(char* radiopacket) {
+void sendRadiopacket(char* radiopacket, int outputLength) {
 
-  if (debug) Serial.print("\nOutput string: "); Serial.println(radiopacket);
+  if (debug) Serial.print("\nOutput: "); Serial.println(radiopacket);
+  if (debug) Serial.print("\nSize: "); Serial.println(outputLength);
   if (debug) Serial.println("Sending...\t");
   rf95.send((uint8_t *)radiopacket, 200);
   rf95.waitPacketSent();

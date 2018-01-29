@@ -10,18 +10,17 @@ char speedBuff[15];
 char angleBuff[15];
 
 void handleData() {
-  led.breath(20);
   int outputLength = 0;
   timer = millis(); // reset the timer
   packetNumber++;
-  if (debug) {
-    Serial.print("\n-----------------"); Serial.print(" PACKET: "); Serial.print(packetNumber); Serial.println(" -----------------");
-    displayGPSRTCReadings();
-    displayGPSPositionReadings();
-    displaySoilSensorReadings();
-    displayAccSensorReading();
-    displayUltrasonicSensorReadings();
-  }
+  //    if (debug) {
+  //      Serial.print("\n-----------------"); Serial.print(" PACKET: "); Serial.print(packetNumber); Serial.println(" -----------------");
+  //      displayGPSRTCReadings();
+  //      displayGPSPositionReadings();
+  //      displaySoilSensorReadings();
+  //      displayAccSensorReading();
+  //      displayUltrasonicSensorReadings();
+  //    }
   sensors_event_t aevent, mevent;
   // get a new sensor event
   accelmag.getEvent(&aevent, &mevent);
@@ -97,9 +96,7 @@ void handleData() {
   strcat(radiopacket, distance);
   outputLength += strlen(distance);
 
-  if (debug) Serial.print("\nOutput size: "); Serial.println(outputLength);
-  //  if (debug) Serial.print("radiopacket: "); Serial.println(radiopacket);
-  sendRadiopacket(radiopacket);
+  sendRadiopacket(radiopacket, outputLength);
 
   free(timeData);
   free(dateData);
